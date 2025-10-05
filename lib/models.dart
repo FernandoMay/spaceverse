@@ -403,6 +403,25 @@ class ModulePosition {
     required this.z,
     required this.orientation,
   });
+
+  factory ModulePosition.fromJson(Map<String, dynamic> json) {
+    return ModulePosition(
+      x: json['x'].toDouble(),
+      y: json['y'].toDouble(),
+      z: json['z'].toDouble(),
+      orientation: ModuleOrientation.values[json['orientation']],
+    );
+  }
+  
+  Map<String, dynamic> toJson() {
+    return {
+      'x': x,
+      'y': y,
+      'z': z,
+      'orientation': orientation.index,
+    };
+  }
+
 }
 
 enum ModuleOrientation {

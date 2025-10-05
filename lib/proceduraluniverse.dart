@@ -5,6 +5,8 @@ import 'package:spaceverse/models.dart';
 class ProceduralUniverse {
   final int seed;
   final Random random;
+
+  var galaxies;
   
   ProceduralUniverse(this.seed) : random = Random(seed);
   

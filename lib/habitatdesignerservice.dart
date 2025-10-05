@@ -1,3 +1,8 @@
+import 'dart:convert';
+import 'dart:math';
+
+import 'package:flutter/services.dart';
+import 'package:spaceverse/blockchainservice.dart';
 import 'package:spaceverse/models.dart';
 
 class HabitatDesignerService {
@@ -51,7 +56,7 @@ class HabitatDesignerService {
       missionDuration: missionDuration,
       destination: destination,
       modules: [],
-      layout: Layout(),
+      layout: Layout(modulePositions: {}, accessPaths: []),
     );
     
     // Calculate total volume

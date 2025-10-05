@@ -1,4 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:spaceverse/advug.dart' hide Planet, Galaxy, Star, StarType;
+import 'package:spaceverse/blockchainservice.dart';
+import 'package:spaceverse/exoplanethunterservice.dart';
+import 'package:spaceverse/habitatdesignerservice.dart';
+import 'package:spaceverse/models.dart';
+import 'package:spaceverse/proceduraluniverse.dart';
 
 void main() {
   runApp(const MyApp());
@@ -352,7 +360,7 @@ class _UniverseExplorerScreenState extends State<UniverseExplorerScreen> {
                   ElevatedButton(
                     onPressed: _generateUniverse,
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.deepPurple,
+                      backgroundColor: Colors.deepPurple,
                     ),
                     child: Text('Generate'),
                   ),
@@ -607,7 +615,7 @@ class _UniverseExplorerScreenState extends State<UniverseExplorerScreen> {
                   style: TextStyle(color: Colors.white),
                 ),
                 subtitle: Text(
-                  'Orbital Distance: ${planet.orbitalDistance.toStringAsFixed(1)} AU',
+                  'Orbital Distance: ${planet.orbitalPeriod.toStringAsFixed(1)} AU',
                   style: TextStyle(color: Colors.white70),
                 ),
                 trailing: Icon(Icons.arrow_forward_ios, color: Colors.white70),
@@ -1623,7 +1631,7 @@ class _ExoplanetDetailsScreenState extends State<ExoplanetDetailsScreen> {
                       icon: Icon(Icons.save),
                       label: Text('Save to Blockchain'),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.purple,
+                        backgroundColor: Colors.purple,
                       ),
                     ),
                   ),
@@ -1634,7 +1642,7 @@ class _ExoplanetDetailsScreenState extends State<ExoplanetDetailsScreen> {
                       icon: Icon(Icons.share),
                       label: Text('Share'),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
+                        backgroundColor: Colors.blue,
                       ),
                     ),
                   ),
@@ -2132,9 +2140,9 @@ class _HabitatDesignerScreenState extends State<HabitatDesignerScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildStatCard('Total Modules', _currentDesign!.modules.length, Colors.blue),
+              _buildStatCard('Total Modules', _currentDesign!.modules.length as String, Colors.blue),
               _buildStatCard('Volume Used', '${(_currentDesign!.modules.fold(0.0, (sum, module) => sum + module.volume) / _currentDesign!.totalVolume * 100).toStringAsFixed(1)}%', Colors.green),
-              _buildStatCard('Design Score', '${_validationResult?.score.toStringAsFixed(1) ?? 'N/A'}', Colors.orange),
+              _buildStatCard('Design Score', _validationResult?.score.toStringAsFixed(1) ?? 'N/A', Colors.orange),
             ],
           ),
         ),
@@ -2159,10 +2167,10 @@ class _HabitatDesignerScreenState extends State<HabitatDesignerScreen> {
       return Center(
         child: ElevatedButton(
           onPressed: _validateDesign,
-          child: Text('Validate Design'),
           style: ElevatedButton.styleFrom(
-            primary: Colors.green,
+            backgroundColor: Colors.green,
           ),
+          child: Text('Validate Design'),
         ),
       );
     }

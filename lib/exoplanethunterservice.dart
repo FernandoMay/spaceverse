@@ -1,3 +1,8 @@
+import 'dart:convert';
+import 'dart:math';
+
+import 'package:spaceverse/models.dart';
+
 class ExoplanetHunterService {
   late TensorFlowModel _model;
   late List<ExoplanetData> _trainingData;

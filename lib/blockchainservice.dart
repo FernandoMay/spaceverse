@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:spaceverse/models.dart';
+import 'package:web3dart/web3dart.dart';
 
 class BlockchainService {
   late Web3Client _client;

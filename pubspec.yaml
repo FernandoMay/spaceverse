@@ -1,5 +1,5 @@
 name: spaceverse
-description: "A new Flutter project."
+description: A comprehensive space exploration and habitat design application
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -34,6 +34,18 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  cloud_firestore: ^6.0.2
+  firebase_auth: ^6.1.0
+  firebase_analytics: ^12.0.2
+  firebase_crashlytics: ^5.0.2
+  firebase_remote_config: ^6.0.2
+  firebase_messaging: ^16.0.2
+  tflite_flutter: ^0.11.0
+  image: ^4.5.4
+  logger: ^2.6.1
+  web3dart: ^3.0.1
+  dio: ^5.9.0
+  ar_core: ^0.0.2+7
 
 dev_dependencies:
   flutter_test:
