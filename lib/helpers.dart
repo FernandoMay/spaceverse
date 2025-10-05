@@ -18,9 +18,6 @@ class Helpers {
     return directory.path;
   }
 
-  getTemporaryDirectory() async {
-    return await getTemporaryDirectory();
-  }
   
   static Future<void> saveToFile(String filename, String content) async {
     try {

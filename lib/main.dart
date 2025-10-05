@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:spaceverse/advug.dart' hide Planet, Galaxy, Star, StarType;
+import 'package:share_plus/share_plus.dart';
 import 'package:spaceverse/blockchainservice.dart';
 import 'package:spaceverse/exoplanethunterservice.dart';
 import 'package:spaceverse/habitatdesignerservice.dart';
@@ -1017,10 +1017,10 @@ class ExoplanetHunterScreen extends StatefulWidget {
 class _ExoplanetHunterScreenState extends State<ExoplanetHunterScreen> {
   final ExoplanetHunterService _service = ExoplanetHunterService();
   bool _isLoading = false;
-  List<ExoplanetData> _discoveredExoplanets = [];
+  final List<ExoplanetData> _discoveredExoplanets = [];
   List<ExoplanetData> _confirmedExoplanets = [];
-  List<ExoplanetData> _candidateExoplanets = [];
-  List<ExoplanetData> _falsePositiveExoplanets = [];
+  final List<ExoplanetData> _candidateExoplanets = [];
+  final List<ExoplanetData> _falsePositiveExoplanets = [];
   ExoplanetData? _selectedExoplanet;
   
   @override
@@ -1109,8 +1109,8 @@ class _ExoplanetHunterScreenState extends State<ExoplanetHunterScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: _discoverExoplanets,
         backgroundColor: Colors.purple,
-        child: Icon(Icons.search),
         tooltip: 'Discover Exoplanets',
+        child: Icon(Icons.search),
       ),
     );
   }
@@ -1507,7 +1507,7 @@ class _ExoplanetHunterScreenState extends State<ExoplanetHunterScreen> {
 class ExoplanetDetailsScreen extends StatefulWidget {
   final ExoplanetData exoplanet;
   
-  ExoplanetDetailsScreen({super.key, required this.exoplanet});
+  const ExoplanetDetailsScreen({super.key, required this.exoplanet});
   
   @override
   _ExoplanetDetailsScreenState createState() => _ExoplanetDetailsScreenState();
@@ -1539,7 +1539,7 @@ class _ExoplanetDetailsScreenState extends State<ExoplanetDetailsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Exoplanet visualization
-              Container(
+              SizedBox(
                 height: 200,
                 child: CustomPaint(
                   painter: ExoplanetPainter(widget.exoplanet),
@@ -1885,7 +1885,7 @@ class _HabitatDesignerScreenState extends State<HabitatDesignerScreen> {
                               borderSide: BorderSide(color: Colors.white),
                             ),
                           ),
-                          value: _currentDesign?.shape,
+                          initialValue: _currentDesign?.shape,
                           items: HabitatShape.values.map((shape) {
                             return DropdownMenuItem(
                               value: shape,
@@ -2044,7 +2044,7 @@ class _HabitatDesignerScreenState extends State<HabitatDesignerScreen> {
                         borderSide: BorderSide(color: Colors.white),
                       ),
                     ),
-                    value: _currentDesign?.destination,
+                    initialValue: _currentDesign?.destination,
                     items: Destination.values.map((destination) {
                       return DropdownMenuItem(
                         value: destination,
@@ -2083,8 +2083,8 @@ class _HabitatDesignerScreenState extends State<HabitatDesignerScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: _validateAndSaveDesign,
         backgroundColor: Colors.green,
-        child: Icon(Icons.save),
         tooltip: 'Validate and Save Design',
+        child: Icon(Icons.save),
       ),
     );
   }
@@ -2418,7 +2418,7 @@ class _HabitatDesignerScreenState extends State<HabitatDesignerScreen> {
       if (destination != null) _currentDesign!.destination = destination;
       
       // Recalculate total volume
-      _currentDesign!.totalVolume = _service._calculateVolume(
+      _currentDesign!.totalVolume = _service.calculateVolume(
         _currentDesign!.shape,
         _currentDesign!.width,
         _currentDesign!.height,
@@ -2426,7 +2426,7 @@ class _HabitatDesignerScreenState extends State<HabitatDesignerScreen> {
       );
       
       // Recalculate required modules
-      final requiredModules = _service._calculateRequiredModules(
+      final requiredModules = _service.calculateRequiredModules(
         _currentDesign!.crewSize,
         _currentDesign!.missionDuration,
         _currentDesign!.destination,

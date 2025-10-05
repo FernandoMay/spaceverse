@@ -1,7 +1,6 @@
 // lib/core/blockchain/ethereum_address.dart
 import 'dart:convert';
 import 'dart:typed_data';
-import 'package:crypto/crypto.dart';
 import 'package:spaceverse/exceptions.dart';
 import 'package:web3dart/web3dart.dart';
 // import 'package:spaceverse/core/errors/exceptions.dart';

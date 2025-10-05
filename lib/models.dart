@@ -51,6 +51,8 @@ class Planet {
   var radius;
 
   var moons;
+
+  var type;
   
   Planet({
     required this.orbitalDistance,
@@ -199,6 +201,8 @@ class HabitatDesign {
   List<HabitatModule> modules;
   Layout layout;
   late double totalVolume;
+
+  var validationResult;
   
   HabitatDesign({
     required this.shape,

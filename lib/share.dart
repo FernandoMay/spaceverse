@@ -1,8 +1,10 @@
 // lib/core/utils/share.dart
-import 'package:share_plus/share_plus';
-import 'package:spaceverse/features/universe_explorer/domain/entities/planet.dart';
-import 'package:spaceverse/features/exoplanet_hunter/domain/entities/exoplanet_data.dart';
-import 'package:spaceverse/features/habitat_designer/domain/entities/habitat_design.dart';
+// import 'package:share_plus/share_plus';
+import 'package:share_plus/share_plus.dart';
+// import 'package:spaceverse/features/universe_explorer/domain/entities/planet.dart';
+// import 'package:spaceverse/features/exoplanet_hunter/domain/entities/exoplanet_data.dart';
+// import 'package:spaceverse/features/habitat_designer/domain/entities/habitat_design.dart';
+import 'package:spaceverse/models.dart';
 
 class ShareUtils {
   static Future<void> shareExoplanet(ExoplanetData exoplanet) async {

@@ -1,7 +1,9 @@
 import 'dart:convert';
 
-import 'package:spaceverse/ethaddress.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart';
 import 'package:spaceverse/models.dart';
+import 'package:wallet/wallet.dart';
 import 'package:web3dart/web3dart.dart';
 
 class BlockchainService {
@@ -31,7 +33,7 @@ class BlockchainService {
     final function = _contract.function('recordExoplanetDiscovery');
     
     final result = await _client.sendTransaction(
-      Credentials.fromPrivateKey('YOUR_PRIVATE_KEY'),
+      EthPrivateKey.fromHex('YOUR_PRIVATE_KEY'),
       Transaction.callContract(
         contract: _contract,
         function: function,
@@ -59,7 +61,7 @@ class BlockchainService {
     final designJson = json.encode(design.toJson());
     
     final result = await _client.sendTransaction(
-      Credentials.fromPrivateKey('YOUR_PRIVATE_KEY'),
+      EthPrivateKey.fromHex('YOUR_PRIVATE_KEY'),
       Transaction.callContract(
         contract: _contract,
         function: function,
@@ -94,7 +96,7 @@ class BlockchainService {
         planetRadius: item[3],
         starRadius: item[4],
         starTemperature: item[5],
-        status: ExoplanetStatus.values[item[6]],
+        status: ExoplanetStatus.values[item[6]], transitDepth: item[7], densityEstimate: item[8],
       ));
     }
     
@@ -126,7 +128,7 @@ class BlockchainService {
     final function = _contract.function('submitProofOfWork');
     
     final result = await _client.sendTransaction(
-      Credentials.fromPrivateKey('YOUR_PRIVATE_KEY'),
+      EthPrivateKey.fromHex('YOUR_PRIVATE_KEY'),
       Transaction.callContract(
         contract: _contract,
         function: function,

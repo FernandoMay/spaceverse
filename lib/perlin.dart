@@ -1,6 +1,5 @@
 // lib/core/utils/perlin_noise.dart
 import 'dart:math';
-import 'package:vector_math/vector_math.dart';
 
 class PerlinNoise {
   final int seed;

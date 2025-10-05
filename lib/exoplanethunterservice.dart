@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:http/http.dart' as http;
 import 'package:spaceverse/models.dart';
+import 'package:spaceverse/tfmodel.dart';
 
 class ExoplanetHunterService {
   late TensorFlowModel _model;
@@ -40,12 +42,25 @@ class ExoplanetHunterService {
   
   Future<List<ExoplanetData>> _loadK2Data() async {
     // Similar implementation for K2 data
-    // ...
+    final response = await http.get(Uri.parse('https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+pl_name,pl_orbper,pl_tranmid,pl_trandur,pl_rade,st_rad,st_teff,pl_status+from+ps+where+'));
+    if (response.statusCode == 200) {
+      final List<dynamic> jsonList = json.decode(response.body);
+      return jsonList.map((json) => ExoplanetData.fromJson(json)).toList();
+    } else {
+      throw Exception('Failed to load Kepler data');
+    }
   }
   
   Future<List<ExoplanetData>> _loadTessData() async {
     // Similar implementation for TESS data
-    // ...
+    final response = await http.get(Uri.parse('https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+pl_name,pl_orbper,pl_tranmid,pl_trandur,pl_rade,st_rad,st_teff,pl_status+from+ps+where+pl_status+in+%28%27candidate%27,%27confirmed%27,%27false+positive%27%29&format=json'));
+    
+    if (response.statusCode == 200) {
+      final List<dynamic> jsonList = json.decode(response.body);
+      return jsonList.map((json) => ExoplanetData.fromJson(json)).toList();
+    } else {
+      throw Exception('Failed to load Kepler data');
+    }
   }
   
   List<ExoplanetData> _preprocessData(List<ExoplanetData> data) {

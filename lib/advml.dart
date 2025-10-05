@@ -1,12 +1,10 @@
 // lib/features/exoplanet_hunter/domain/services/ml_service.dart
 import 'dart:io';
 import 'dart:math';
-import 'dart:typed_data';
 import 'package:spaceverse/exceptions.dart';
 import 'package:spaceverse/logger.dart';
 import 'package:spaceverse/models.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
-import 'package:image/image.dart' as img;
 // import 'package:spaceverse/features/exoplanet_hunter/domain/entities/exoplanet_data.dart';
 // import 'package:spaceverse/core/errors/exceptions.dart';
 // import 'package:spaceverse/core/utils/logger.dart';

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:spaceverse/models.dart';
+import 'package:spaceverse/perlin.dart';
 
 class ProceduralUniverse {
   final int seed;
@@ -26,7 +27,7 @@ class ProceduralUniverse {
   
   double _calculateStarDensity(Point<double> center) {
     // Use fractal noise to determine star density
-    return PerlinNoise.noise(center.x / 100, center.y / 100, seed) * 0.5 + 0.5;
+    return PerlinNoise(seed: seed).noise(center.x / 100, center.y / 100) * 0.5 + 0.5;
   }
   
   List<Star> _generateStars(Point<double> center, int arms, double density) {

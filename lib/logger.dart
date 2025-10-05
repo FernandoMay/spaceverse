@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:logger/logger.dart';
+import 'package:spaceverse/constants.dart';
 // import 'package:spaceverse/app/constants/app_constants.dart';
 
 class AppLogger {
@@ -51,7 +52,7 @@ class FileOutput extends LogOutput {
   late File _file;
 
   @override
-  void init() {
+  Future<void> init() async {
     super.init();
     _file = File('logs/app.log');
     _sink = _file.openWrite(mode: FileMode.append);
@@ -65,7 +66,7 @@ class FileOutput extends LogOutput {
   }
 
   @override
-  void destroy() {
+  Future<void> destroy() async {
     _sink.close();
     super.destroy();
   }

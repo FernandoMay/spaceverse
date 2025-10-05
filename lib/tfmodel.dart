@@ -1,13 +1,13 @@
 // lib/core/ml/tensorflow_model.dart
-import 'dart:typed_data';
+import 'dart:io';
 import 'package:spaceverse/exceptions.dart';
 import 'package:spaceverse/logger.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 // import 'package:spaceverse/core/errors/exceptions.dart';
 
 class TensorFlowModel {
-  late Interpreter _interpreter;
-  bool _isInitialized = false;
+  late final Interpreter _interpreter;
+  final bool _isInitialized = false;
   
   TensorFlowModel._(this._interpreter);
   
@@ -22,7 +22,7 @@ class TensorFlowModel {
   
   static Future<TensorFlowModel> fromFile(String modelPath) async {
     try {
-      final interpreter = await Interpreter.fromFile(modelPath);
+      final interpreter = Interpreter.fromFile(modelPath as File);
       return TensorFlowModel._(interpreter);
     } catch (e) {
       throw MLException('Failed to load TensorFlow model from file: $modelPath', details: e);

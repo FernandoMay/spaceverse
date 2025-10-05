@@ -359,4 +359,37 @@ class HabitatDesignerService {
     final blockchainService = BlockchainService();
     return await blockchainService.getSharedHabitatDesigns();
   }
+
+  double calculateVolume(HabitatShape shape, double width, double height, double depth) {
+    switch (shape) {
+      case HabitatShape.cylinder:
+        return pi * pow(width / 2, 2) * height;
+      case HabitatShape.sphere:
+        return (4/3) * pi * pow(width / 2, 3);
+      case HabitatShape.box:
+        return width * height * depth;
+      case HabitatShape.torus:
+        final majorRadius = width / 2;
+        final minorRadius = depth / 2;
+        return 2 * pow(pi, 2) * majorRadius * pow(minorRadius, 2);
+    }
+  }
+
+  List<HabitatModule> calculateRequiredModules(int crewSize, int missionDuration, Destination destination) {
+    final requiredModules = <HabitatModule>[];
+    
+    // Calculate required modules based on crew size and mission duration
+    for (final module in _availableModules) {
+      if (_isModuleRequired(module, crewSize, missionDuration, destination)) {
+        // Calculate required quantity
+        final quantity = _calculateModuleQuantity(module, crewSize, missionDuration);
+        
+        for (int i = 0; i < quantity; i++) {
+          requiredModules.add(module);
+        }
+      }
+    }
+    
+    return requiredModules;
+  }
 }
