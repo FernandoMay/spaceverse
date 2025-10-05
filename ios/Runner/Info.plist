@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+ <key>NSCameraUsageDescription</key>
+    <string>This app needs camera access for AR features</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app needs location access for weather features</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>This app needs photo library access for sharing features</string>
+    <key>ARKitUsageDescription</key>
+    <string>This app uses AR for visualizing space habitats and planets</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
