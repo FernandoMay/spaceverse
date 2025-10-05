@@ -8,13 +8,13 @@ SpaceVerse is a comprehensive mobile application that combines procedural univer
 
 ## Project Demonstration
 
-https://www.youtube.com/watch?v=spaceverse_demo
+https://www.spaceverse.earth
 
 *Note: This is a placeholder link for the demo video. In a real submission, you would upload a 30-second video showcasing the app's key features: universe generation, exoplanet detection, and habitat design.*
 
 ## Project Link
 
-https://github.com/dinomakers/spaceverse
+https://github.com/FernandoMay/spaceverse
 
 *Note: This is a placeholder link to the project repository. In a real submission, you would provide the actual GitHub repository or website link.*
 
@@ -133,6 +133,13 @@ We plan to continue developing SpaceVerse by:
 3. Expanding AR/VR capabilities
 4. Creating educational modules for classroom use
 5. Developing a web version for broader accessibility
+
+## More About SpaceVerse
+
+https://github.com/FernandoMay/spaceverses
+https://spaceverses.netlify.app/
+
+---
 
 SpaceVerse represents our commitment to making space exploration accessible to everyone while contributing to real scientific research. We believe this project has the potential to inspire the next generation of space explorers and scientists.
 
