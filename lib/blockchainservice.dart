@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:spaceverse/ethaddress.dart';
 import 'package:spaceverse/models.dart';
 import 'package:web3dart/web3dart.dart';
 

@@ -47,6 +47,10 @@ class Planet {
   final double transitDepth;
   final double orbitalPeriod;
   final double transitDuration;
+
+  var radius;
+
+  var moons;
   
   Planet({
     required this.orbitalDistance,
@@ -268,6 +272,8 @@ class HabitatModule {
   final bool scalesWithCrew;
   final bool scalesWithDuration;
   final int capacityPerUnit;
+
+  var position;
   
   HabitatModule({
     required this.name,

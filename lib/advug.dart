@@ -1,7 +1,8 @@
 // lib/features/universe_explorer/domain/services/universe_generator.dart
 import 'dart:math';
 import 'dart:ui';
-import 'package:vector_math/vector_math.dart';
+import 'package:spaceverse/perlin.dart';
+import 'package:vector_math/vector_math.dart' hide SimplexNoise;
 // import 'package:spaceverse/features/universe_explorer/domain/entities/universe.dart';
 // import 'package:spaceverse/core/utils/math_utils.dart';
 

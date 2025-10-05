@@ -1,7 +1,14 @@
 // lib/features/ar_viewer/domain/services/ar_service.dart
+import 'dart:io';
+import 'dart:math';
+import 'dart:typed_data';
+
 import 'package:ar_core/ar_core.dart';
 import 'package:flutter/material.dart';
+import 'package:spaceverse/advug.dart' show Moon, PlanetaryRings;
+import 'package:spaceverse/arcodecontroller.dart';
 import 'package:spaceverse/exceptions.dart';
+import 'package:spaceverse/models.dart';
 // import 'package:spaceverse/features/habitat_designer/domain/entities/habitat_design.dart';
 // import 'package:spaceverse/features/universe_explorer/domain/entities/planet.dart';
 // import 'package:spaceverse/core/errors/exceptions.dart';
@@ -90,18 +97,18 @@ class ARService {
       ));
       
       // Add atmosphere if present
-      if (planet.atmosphere != null) {
+      if (planet.hasAtmosphere) {
         await _addAtmosphere(planet);
       }
       
       // Add moons
       for (final moon in planet.moons) {
-        await _addMoon(moon, planet);
+        await _addMoon(moon as Moon, planet);
       }
       
       // Add rings if present
-      if (planet.rings != null) {
-        await _addRings(planet.rings!);
+      if (planet.orbitalDistance != null) {
+        await _addRings((planet.orbitalDistance%3) as PlanetaryRings);
       }
     } catch (e) {
       throw ARException('Failed to visualize planet in AR', details: e);
